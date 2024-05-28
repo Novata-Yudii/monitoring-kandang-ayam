@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['user_id', 'fase_device'];
 
     public function dht(){
         return $this->hasMany(Dht::class);
@@ -16,5 +16,9 @@ class Device extends Model
 
     public function ldr(){
         return $this->hasMany(Ldr::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

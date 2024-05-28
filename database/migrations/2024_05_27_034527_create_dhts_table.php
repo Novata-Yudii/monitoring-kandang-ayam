@@ -6,20 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('ldrs', function (Blueprint $table) {
+        Schema::create('dhts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('device_id')->constrained(
-                table: 'devices', indexName: 'ldrs_device_id'
+                table:'devices', indexName:'dhts_device_id'
             );
-            $table->decimal('ldr');
+            $table->decimal('temperature');
+            $table->decimal('humidity');
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('ldrs');
+        Schema::dropIfExists('dhts');
     }
 };

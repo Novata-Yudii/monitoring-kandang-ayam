@@ -28,4 +28,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function device(){
+        return $this->hasMany(Device::class);
+    }
 }

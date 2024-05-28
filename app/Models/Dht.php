@@ -11,6 +11,6 @@ class Dht extends Model
     protected $fillable = ['device_id','temperature','humidity'];
 
     public function device(){
-        return $this->belongsToMany(Device::class);
+        return $this->belongsTo(Device::class);
     }
 }

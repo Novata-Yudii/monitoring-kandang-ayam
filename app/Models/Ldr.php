@@ -11,6 +11,6 @@ class Ldr extends Model
     protected $fillable = ['device_id', 'ldr'];
 
     public function device(){
-        return $this->belongsToMany(Device::class);
+        return $this->belongsTo(Device::class);
     }
 }

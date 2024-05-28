@@ -11,8 +11,9 @@ return new class extends Migration
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained(
-                table: 'users', indexName: 'devices_user_id'
+                table:'users', indexName:'devices_user_id'
             );
+            $table->string('fase_device');
             $table->timestamps();
         });
     }
