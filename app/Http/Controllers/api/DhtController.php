@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Device;
 use Illuminate\Http\Request;
 use App\Models\Dht;
 
@@ -16,18 +17,18 @@ class DhtController extends Controller
         ]);
     }
 
-    public function show($device_id){ //pakek aja device_id dht yg berelasi dgn tabel device
-        $dht = Dht::where('device_id', $device_id)->get();
-        $device = $dht[0]->device;
+    public function show($device_kode){ 
+        $dht = Dht::where('device_kode', $device_kode)->get()[0];
+        $pemilik = Device::where('user_id', $dht->device->user_id)->get()[0];
         return response()->json([
-            'message' => 'Data detail dht ditemukan',
-            'data' => $device
+            'message' => 'Data detail dht ditemukan berdasar kode device',
+            'pemilik' => $pemilik->user
         ]);
     }
 
     public function store(Request $request){
         $dht = Dht::create([
-            'device_id' => $request->device_id,
+            'device_kode' => $request->device_kode,
             'temperature' => $request->temperature,
             'humidity' => $request->humidity
         ]);

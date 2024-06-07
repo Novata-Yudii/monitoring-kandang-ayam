@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Dht extends Model
 {
     use HasFactory;
-    protected $fillable = ['device_id','temperature','humidity'];
+    protected $fillable = ['device_kode','temperature','humidity'];
 
     public function device(){
-        return $this->belongsTo(Device::class);
+        return $this->belongsTo(Device::class, 'device_kode', 'kode');
     }
 }

@@ -13,7 +13,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained(
                 table:'users', indexName:'devices_user_id'
             );
-            $table->string('fase_device');
+            $table->string('kode')->unique();
+            $table->string('device_name');
             $table->timestamps();
         });
     }

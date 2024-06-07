@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Device;
+use App\Models\Dht;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
@@ -19,7 +20,7 @@ class DeviceController extends Controller
     public function store(Request $request){
         $device = Device::create([
             'user_id' => $request->user_id,
-            'fase_device' => $request->fase_device
+            'kode' => $request->kode
         ],);
         return response()->json([
             'message' => 'Berhasil menambahkan data',
@@ -27,27 +28,35 @@ class DeviceController extends Controller
         ]);
     }
 
-    public function showDht($id){
-        $device = Device::find($id);
-        $dhtValue = [];
-        foreach ($device->dht as $i => $dht) {
-            $dhtValue[$i] = $dht;
-        }
+    public function showDht($kode){
+        $device = Device::where('kode', $kode)->get()[0];
         return response()->json([
-            'message' => 'Berhasil menemukan data dht',
-            'data' => $dhtValue
+            'message' => 'Berhasil menemukan data dht berdasarkan kode device',
+            'data' => $device->dht
         ]);
     }
 
-    public function showLdr($id){
-        $device = Device::find($id);
-        $ldrValue = [];
-        foreach ($device->ldr as $i => $ldr) {
-            $ldrValue[$i] = $ldr;
-        }
+    public function showLdr($kode){
+        $device = Device::where('kode', $kode)->get()[0];
         return response()->json([
-            'message' => 'Berhasil menemukan data ldr',
-            'data' => $ldrValue
+            'message' => 'Berhasil menemukan data ldr berdasarkan kode device',
+            'data' => $device->ldr
+        ]);
+    }
+
+    public function showLampu($kode){
+        $device = Device::where('kode', $kode)->get()[0];
+        return response()->json([
+            'message' => 'Berhasil menemukan data config lampu berdasarkan kode device',
+            'data' => $device->configlampu
+        ]);
+    }
+
+    public function showHeater($kode){
+        $device = Device::where('kode', $kode)->get()[0];
+        return response()->json([
+            'message' => 'Berhasil menemukan data config heater berdasarkan kode device',
+            'data' => $device->configheater
         ]);
     }
 }

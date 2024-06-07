@@ -6,24 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('ldrs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('device_id')->constrained(
-                table:'devices', indexName:'ldrs_device_id'
-            );
+            $table->string('device_kode');
+            $table->foreign('device_kode')->references('kode')->on('devices');
             $table->decimal('ldr');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('ldrs');

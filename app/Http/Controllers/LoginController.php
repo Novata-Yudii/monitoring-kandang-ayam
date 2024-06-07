@@ -13,24 +13,28 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
-        $email = $request->email;
-        $password = $request->password;
-        Session::flash('email',$email);
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+        Session::flash('email', $request->email);
+        $credential = $request->validate([
+            'email' => 'required|email:dns|max:255',
+            'password' => 'required|min:5'
         ],[
             'email.required' => 'Email wajib di isi!',
-            'password.required' => 'Password wajib di isi!'
+            'email.email' => 'Email tidak valid!',
+            'password.required' => 'Password wajib di isi!',
+            'password.min' => 'Password minimal 5 karakter!'
         ]);
-        $infoLogin = [
-            'email' => $email,
-            'password' => $password
-        ];
-        if (Auth::attempt($infoLogin)) {
-            return redirect('/')->with('succes', 'Berhasil login');
+        if (Auth::attempt($credential)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard')->with('succes', 'Berhasil login');
         }else {
-            return redirect('/login')->withErrors('Username atau Password tidak valid');
+            return redirect('/login')->with('error_auth', 'Username atau Password tidak valid');
         }
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 }
