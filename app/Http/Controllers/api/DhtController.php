@@ -37,4 +37,11 @@ class DhtController extends Controller
             'data' => $dht
         ]);
     }
+
+    public function reset(){
+        Dht::truncate();
+        return response()->json([
+            'message' => 'Berhasil reset data'
+        ]);
+    }
 }

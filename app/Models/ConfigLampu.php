@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ConfigLampu extends Model
 {
     use HasFactory;
-    protected $fillable = ['device_kode', 'lamp_on', 'lamp_off'];
+    protected $fillable = ['device_kode', 'lamp_on', 'lamp_off','status'];
 
     public function device(){
         return $this->belongsTo(Device::class, 'device_kode', 'kode');

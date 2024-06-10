@@ -36,4 +36,11 @@ class LdrController extends Controller
             'data' => $ldr
         ]);
     }
+
+    public function reset(){
+        Ldr::truncate();
+        return response()->json([
+            'message' => 'Berhasil reset data'
+        ]);
+    }
 }

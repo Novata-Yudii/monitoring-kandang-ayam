@@ -22,7 +22,13 @@ class DataController extends Controller
         ]);
         
         return response()->json([
-            'message' => 'Berhasil menambahkan data'
+            'message' => 'Berhasil menambahkan data',
+            'data' => [
+                'device_kode' => $request->device_kode,
+                'temperature' => $request->temperature,
+                'humidity' => $request->humidity,
+                'ldr' => $request->ldr
+                ]
         ]);
     }
 }

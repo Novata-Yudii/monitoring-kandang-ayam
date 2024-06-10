@@ -12,12 +12,11 @@
           </div>
           <div class="stat-cards-info">
             <p class="stat-cards-info__num">Temperature</p>
-            <p class="stat-cards-info__title" id="temperature">0 C</p>
+            <p class="stat-cards-info__title" style="display: inline-block" id="temperature">0</p><span style="color: #c5c2c2">&#176;C</span>
             <p class="stat-cards-info__progress">
               <span class="stat-cards-info__profit success">
-                <i data-feather="trending-up" aria-hidden="true"></i>rata-rata
-              </span>
-              Per jam
+                <i data-feather="trending-up" aria-hidden="true"></i>Nilai terkini
+              </span>              
             </p>
           </div>
         </article>
@@ -32,9 +31,8 @@
             <p class="stat-cards-info__title" id="humidity">0%</p>
             <p class="stat-cards-info__progress">
               <span class="stat-cards-info__profit success">
-                <i data-feather="trending-up" aria-hidden="true"></i>rata-rata
-              </span>
-              Per jam
+                <i data-feather="trending-up" aria-hidden="true"></i>Nilai terkini
+              </span>              
             </p>
           </div>
         </article>
@@ -49,9 +47,8 @@
             <p class="stat-cards-info__title" id="intensitasCahaya">0 lux</p>
             <p class="stat-cards-info__progress">
               <span class="stat-cards-info__profit success">
-                <i data-feather="trending-up" aria-hidden="true"></i>rata-rata
+                <i data-feather="trending-up" aria-hidden="true"></i>Nilai terkini
               </span>
-              Per jam
             </p>
           </div>
         </article>
@@ -72,43 +69,43 @@
           <ul class="top-cat-list">
             <li>
               <a href="##">
-                <div class="top-cat-list__title">Temperature</div>
+                <div class="top-cat-list__title" style="color: aqua">Temperature</div>
                 <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="blue">50.0 C</span>
+                  <span class="timetemp1">00:00:00</span> --- <span class="temperature1">0</span>&#176;C
                 </div>
                 <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="blue">50.0 C</span>
+                  <span class="timetemp2">00:00:00</span> --- <span class="temperature2">0</span>&#176;C
                 </div>
                 <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="blue">50.0 C</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">Humidity</div>
-                <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="danger">50 %</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="danger">50 %</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="danger">50 %</span>
+                  <span class="timetemp3">00:00:00</span> --- <span class="temperature3">0</span>&#176;C
                 </div>
               </a>
             </li>
             <li>
               <a href="##">
-                <div class="top-cat-list__title">Intensitas Cahaya</div>
+                <div class="top-cat-list__title" style="color: brown">Humidity</div>
                 <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="warning">50 lux</span>
+                  <span class="timehumi1">00:00:00</span> --- <span class="humidity1">0</span>%
                 </div>
                 <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="warning">50 lux</span>
+                  <span class="timehumi2">00:00:00</span> --- <span class="humidity2">0</span>%
                 </div>
                 <div class="top-cat-list__subtitle">
-                  07:00:00 --- <span class="warning">50 lux</span>
+                  <span class="timehumi3">00:00:00</span> --- <span class="humidity3">0</span>%
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title" style="color: yellow">Intensitas Cahaya</div>
+                <div class="top-cat-list__subtitle">
+                  <span class="timeldr1">00:00:00</span> --- <span class="ldr1">0</span> lux
+                </div>
+                <div class="top-cat-list__subtitle">
+                  <span class="timeldr2">00:00:00</span> --- <span class="ldr2">0</span> lux
+                </div>
+                <div class="top-cat-list__subtitle">
+                  <span class="timeldr3">00:00:00</span> --- <span class="ldr3">0</span> lux
                 </div>
               </a>
             </li>

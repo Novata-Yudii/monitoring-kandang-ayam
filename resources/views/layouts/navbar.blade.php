@@ -1,6 +1,7 @@
 <nav class="main-nav--bg">
     <div class="container main-nav">
       <div class="main-nav-start" style="display: flex; width: 1000px; justify-content: space-between; align-items: center">
+        @if ($title === 'Dashboard')
         <div class="dropdown-baru">
           <input type="text" class="text02" readonly placeholder="Device Menu">
           <div class="option">
@@ -14,6 +15,7 @@
         <div class="say-name-user">
           <h3 style="color: #d6d6d6">Welcome back, {{Auth::user()->name}} !</h3>
         </div>
+        @endif
       </div>
       <div class="main-nav-end">
         <button class="sidebar-toggle transparent-btn" title="Menu" type="button">

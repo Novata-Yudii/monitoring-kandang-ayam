@@ -36,6 +36,8 @@ Route::get('/device/edit/{id}', [DeviceController::class, 'edit'])->middleware([
 Route::put('/device/{id}', [DeviceController::class, 'update']);
 Route::delete('/device/{id}', [DeviceController::class, 'destroy']);
 
-Route::get('/lampu', [LampuController::class, 'index'])->middleware('auth');
+Route::get('/lampu', [LampuController::class, 'config'])->middleware('auth');
+Route::get('/lampu/manual', [LampuController::class, 'manual'])->middleware('auth');
 
-Route::get('/heater', [HeaterController::class, 'index'])->middleware('auth');
+Route::get('/heater', [HeaterController::class, 'config'])->middleware('auth');
+Route::get('/heater/manual', [HeaterController::class, 'manual'])->middleware('auth');

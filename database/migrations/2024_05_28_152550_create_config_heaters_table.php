@@ -12,10 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('device_kode');
             $table->foreign('device_kode')->references('kode')->on('devices');
-            $table->decimal('min_temp');
-            $table->decimal('max_temp');
-            $table->boolean('status');
-            $table->enum('mode', ['automatic','manual']);
+            $table->string('min_temp')->nullable();
+            $table->string('max_temp')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

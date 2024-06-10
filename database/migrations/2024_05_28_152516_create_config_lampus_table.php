@@ -12,9 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('device_kode');
             $table->foreign('device_kode')->references('kode')->on('devices');
-            $table->time('lamp_on');
-            $table->time('lamp_off');
-            $table->integer('status');
+            $table->time('lamp_on')->nullable();
+            $table->time('lamp_off')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

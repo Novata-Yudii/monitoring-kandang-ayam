@@ -2610,6 +2610,44 @@ label {
     flex-direction: column;
     width: 100%;
 }
+.pembungkus {
+    position: relative; 
+    height: 85px; 
+    margin-top: 8px
+}
+.pembungkus .toogle {
+    position: absolute; 
+    top: 33px; 
+    left: 0; 
+    width: 70px; 
+    height: 35px; 
+    background-color: #222235; 
+    border-radius: 25px;
+}
+.pembungkus .toogle .toogle-button {
+    position: absolute; 
+    top: 4px; 
+    left: 5px; 
+    width: 31px; 
+    height: 27px; 
+    background: #fff; 
+    border-radius: 50%; 
+    cursor: pointer;
+}
+.pembungkus .status {
+    color: #fff; 
+    position: absolute; 
+    left: 79px; 
+    top: 38px; 
+    font-size: 23px; 
+    font-weight: 550;
+}
+.pembungkus .toogle.active {
+    background-color: cornflowerblue;
+}
+.pembungkus .toogle.active .toogle-button{
+    left: 35px;
+}
 .form-input {
     border-radius: 8px;
     border-width: 0;

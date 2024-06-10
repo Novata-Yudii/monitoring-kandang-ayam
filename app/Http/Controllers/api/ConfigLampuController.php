@@ -28,13 +28,32 @@ class ConfigLampuController extends Controller
 
     public function store(Request $request){
         $conflampu = ConfigLampu::create([
-            'device_kode' => $request->device_kode,
+            'device_kode' => $request->kode,
             'lamp_on' => $request->lamp_on,
-            'lamp_off' => $request->lamp_off
+            'lamp_off' => $request->lamp_off,
+            'status' => 'timer'
         ]);
         return response()->json([
             'message' => 'Berhasil menambahkan data config lampu',
             'data' => $conflampu
         ]);
     }
+
+    public function storeManual(Request $request){
+        $conflampu = ConfigLampu::create([
+            'device_kode' => $request->device_kode,
+            'status' => $request->status
+        ]);
+        return response()->json([
+            'message' => 'Berhasil menambahkan data config lampu secara Manual',
+            'data' => $conflampu
+        ]);
+    }
+
+    public function reset(){
+        ConfigLampu::truncate();
+        return response()->json([
+            'message' => 'Berhasil reset data'
+        ]);
+    }    
 }

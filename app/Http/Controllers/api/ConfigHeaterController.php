@@ -28,13 +28,33 @@ class ConfigHeaterController extends Controller
 
     public function store(Request $request){
         $confheater = ConfigHeater::create([
+            'device_kode' => $request->kode,
+            'min_temp' => $request->min_temp,
+            'max_temp' => $request->max_temp,
+            'status' => 'automatic'
+        ]);
+        return redirect('/heater')->with('succes', 'Berhasil menambahkan data heater');
+        // return response()->json([
+        //     'message' => 'Berhasil menambahkan data config heater',
+        //     'data' => $confheater
+        // ]);
+    }
+
+    public function storeManual(Request $request){
+        $confheater = ConfigHeater::create([
             'device_kode' => $request->device_kode,
-            'temperature' => $request->temperature,
             'status' => $request->status
         ]);
         return response()->json([
-            'message' => 'Berhasil menambahkan data config heater',
+            'message' => 'Berhasil menambahkan data config heater secara Manual',
             'data' => $confheater
         ]);
     }
+
+    public function reset(){
+        ConfigHeater::truncate();
+        return response()->json([
+            'message' => 'Berhasil reset data'
+        ]);
+    } 
 }
