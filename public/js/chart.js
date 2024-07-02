@@ -96,7 +96,87 @@ $(document).ready(function(){
             $('.timeldr3').text(time[2]);
         }
     }
+    function dataManual(){
+        let now = new Date();
 
+        // Cek isi array => biar di chart tidak terlalu banyak
+        if( myChart.data.datasets[0].data.length === 7 ){
+            myChart.data.datasets[0].data.shift();
+            myChart.data.datasets[1].data.shift();
+            myChart.data.datasets[2].data.shift();
+            myChart.data.labels.shift();
+        }
+
+        // Add to chart
+        myChart.data.datasets[0].data.push(Math.round(Math.random() * 100));
+        myChart.data.datasets[1].data.push(Math.round(Math.random() * 100));
+        myChart.data.datasets[2].data.push(Math.round(Math.random() * 100));
+        myChart.data.labels.push(now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds());
+        myChart.update();
+    
+        // Me replace value from mqtt to html blade over jquery
+        $('#temperature').text(myChart.data.datasets[0].data.findLast(element => element));
+        $('#humidity').text(myChart.data.datasets[1].data.findLast(element => element));
+        $('#intensitasCahaya').text(myChart.data.datasets[2].data.findLast(element => element));
+
+        // History value sensor
+        temperature.push(Math.round(Math.random() * 100));
+        humidity.push(Math.round(Math.random() * 100));
+        ldr.push(Math.round(Math.random() * 100));
+        time.push(now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds());
+
+        console.log(temperature.length)
+        if(temperature.length === 1){
+            $('.temperature1').text(Math.round(Math.random() * 100));
+            $('.humidity1').text(Math.round(Math.random() * 100));
+            $('.ldr1').text(Math.round(Math.random() * 100));
+            $('.timetemp1').text(time[0]);
+            $('.timehumi1').text(time[0]);
+            $('.timeldr1').text(time[0]);
+        }else if(temperature.length === 2){
+            $('.temperature2').text(Math.round(Math.random() * 100));
+            $('.humidity2').text(Math.round(Math.random() * 100));
+            $('.ldr2').text(Math.round(Math.random() * 100));
+            $('.timetemp2').text(time[1]);
+            $('.timehumi2').text(time[1]);
+            $('.timeldr2').text(time[1]);
+        }else if(temperature.length === 3){
+            $('.temperature3').text(Math.round(Math.random() * 100));
+            $('.humidity3').text(Math.round(Math.random() * 100));
+            $('.ldr3').text(Math.round(Math.random() * 100));
+            $('.timetemp3').text(time[2]);
+            $('.timehumi3').text(time[2]);
+            $('.timeldr3').text(time[2]);
+        }else if(temperature.length === 4){
+            temperature.shift();
+            ldr.shift();
+            time.shift();
+            
+            $('.temperature1').text(temperature[0]);
+            $('.humidity1').text(humidity[0]);
+            $('.ldr1').text(ldr[0]);
+
+            $('.temperature2').text(temperature[1]);
+            $('.humidity2').text(humidity[1]);
+            $('.ldr2').text(ldr[1]);
+
+            $('.temperature3').text(temperature[2]);
+            $('.humidity3').text(humidity[2]);
+            $('.ldr3').text(ldr[2]);
+
+            $('.timetemp1').text(time[0]);
+            $('.timehumi1').text(time[0]);
+            $('.timeldr1').text(time[0]);
+
+            $('.timetemp2').text(time[1]);
+            $('.timehumi2').text(time[1]);
+            $('.timeldr2').text(time[1]);
+
+            $('.timetemp3').text(time[2]);
+            $('.timehumi3').text(time[2]);
+            $('.timeldr3').text(time[2]);
+        }
+    }
     // myChart
     let chart = document.getElementById('myChart');
     if (chart) {
@@ -199,7 +279,7 @@ $(document).ready(function(){
             }
         });
     }
-
+    window.setInterval(dataManual,3000);
     // Connecting to mqtt broker public (EMQX)
     const url = 'wss://x10ea311.ala.asia-southeast1.emqxsl.com:8084/mqtt'
     const options = {
